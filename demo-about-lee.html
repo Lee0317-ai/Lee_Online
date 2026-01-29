@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Lee - Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            background: 'hsl(var(--background))',
+            foreground: 'hsl(var(--foreground))',
+            card: 'hsl(var(--card))',
+            primary: 'hsl(var(--primary))',
+            muted: 'hsl(var(--muted))',
+            'muted-foreground': 'hsl(var(--muted-foreground))',
+            border: 'hsl(var(--border))',
+          },
+          fontFamily: {
+            sans: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          boxShadow: {
+            'brutal': '4px 4px 0 0 hsl(var(--primary))',
+            'brutal-lg': '6px 6px 0 0 hsl(var(--primary))',
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --background: 0 0% 100%;
+      --foreground: 0 0% 9%;
+      --primary: 217 91% 60%;
+      --muted: 0 0% 96%;
+      --muted-foreground: 0 0% 45%;
+      --border: 0 0% 89%;
+    }
+
+    .dark {
+      --background: 0 0% 4%;
+      --foreground: 0 0% 98%;
+      --primary: 217 91% 60%;
+      --muted: 0 0% 15%;
+      --muted-foreground: 0 0% 63%;
+      --border: 0 0% 27%;
+    }
+
+    body {
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .timeline-line {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(
+        to bottom,
+        hsl(var(--primary)) 0%,
+        hsl(var(--border)) 100%
+      );
+    }
+
+    .timeline-node {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline-year {
+      position: absolute;
+      left: 0;
+      top: 0;
+      transform: translateX(-50%);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body class="min-h-screen py-12 px-4">
+  <!-- 主题切换按钮 -->
+  <button
+    onclick="document.documentElement.classList.toggle('dark')"
+    class="fixed top-4 right-4 z-50 border-2 border-[hsl(var(--border))] bg-[hsl(var(--background))] px-4 py-2 font-mono text-sm font-bold hover:border-[hsl(var(--primary))] transition-all"
+  >
+    <span id="theme-text">浅色</span>
+  </button>
+
+  <!-- 主容器 -->
+  <div class="max-w-3xl mx-auto">
+    <!-- 标题 -->
+    <div class="mb-12">
+      <p class="mono text-sm text-[hsl(var(--primary))] mb-2">// ABOUT LEE</p>
+      <h1 class="text-4xl font-bold uppercase tracking-tight">关于我</h1>
+    </div>
+
+    <!-- 时间线容器 -->
+    <div class="relative">
+      <!-- 时间线连接线 -->
+      <div class="absolute left-[3px] top-8 bottom-8 w-[2px] bg-gradient-to-b from-[hsl(var(--primary))] to-[hsl(var(--border))]"></div>
+
+      <!-- 2025 · 初 -->
+      <div class="relative pl-12 pb-12">
+        <!-- 时间节点圆点 -->
+        <div class="absolute left-0 top-1 w-2 h-2 rounded-full bg-[hsl(var(--primary))]"></div>
+
+        <!-- 年份标签 -->
+        <span class="mono text-xs text-[hsl(var(--primary))] font-bold uppercase tracking-wider">
+          2025 · 初
+        </span>
+
+        <!-- 内容区 -->
+        <div class="mt-4 space-y-3">
+          <p class="text-lg leading-relaxed">那个夜晚，我第一次和 AI 对话</p>
+          <p class="text-[hsl(var(--muted-foreground))] leading-relaxed">屏幕上的字，像一道光</p>
+          <p class="text-[hsl(var(--muted-foreground))] leading-relaxed">我意识到，世界已经不一样了</p>
+        </div>
+      </div>
+
+      <!-- 2025 · 6月 -->
+      <div class="relative pl-12 pb-12">
+        <div class="absolute left-0 top-1 w-2 h-2 rounded-full bg-[hsl(var(--primary))]"></div>
+
+        <span class="mono text-xs text-[hsl(var(--primary))] font-bold uppercase tracking-wider">
+          2025 · 6月
+        </span>
+
+        <div class="mt-4 space-y-3">
+          <p class="text-lg leading-relaxed">沉浸其中，无法自拔</p>
+          <p class="text-[hsl(var(--muted-foreground))] leading-relaxed font-medium">深深震撼，深深焦虑</p>
+          <p class="text-[hsl(var(--muted-foreground))] leading-relaxed">AI 奔跑的速度太快</p>
+          <p class="text-[hsl(var(--muted-foreground))] leading-relaxed">我怕被时代抛下，怕自己变得多余</p>
+        </div>
+      </div>
+
+      <!-- 现在 -->
+      <div class="relative pl-12">
+        <div class="absolute left-0 top-1 w-2 h-2 rounded-full bg-[hsl(var(--primary))]"></div>
+
+        <span class="mono text-xs text-[hsl(var(--primary))] font-bold uppercase tracking-wider">
+          现在
+        </span>
+
+        <div class="mt-4 space-y-3">
+          <p class="text-lg leading-relaxed">迷雾散去，答案浮现</p>
+          <p class="text-[hsl(var(--muted-foreground))] leading-relaxed">AI 不会取代我们</p>
+          <p class="text-[hsl(var(--muted-foreground))] leading-relaxed font-medium">它会让真正会用它的人，变得无可替代</p>
+          <div class="pt-4 border-t-2 border-[hsl(var(--border))] mt-6">
+            <p class="text-lg font-bold">我是 Lee，一个程序员</p>
+            <p class="text-[hsl(var(--primary))] mono text-sm mt-2">用代码 + AI，在这个时代写下自己的序章</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 返回提示 -->
+    <div class="mt-16 text-center">
+      <p class="mono text-xs text-[hsl(var(--muted-foreground))]">
+        [ 这是 "关于 Lee" 区块 Demo，按 ESC 关闭 ]
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // ESC 键关闭
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        window.close();
+      }
+    });
+
+    // 更新主题按钮文字
+    function updateThemeText() {
+      const isDark = document.documentElement.classList.contains('dark');
+      document.getElementById('theme-text').textContent = isDark ? '浅色' : '深色';
+    }
+
+    // 监听主题变化
+    const observer = new MutationObserver(updateThemeText);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+
+    // 初始化
+    updateThemeText();
+  </script>
+</body>
+</html>
