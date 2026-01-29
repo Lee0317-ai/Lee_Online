@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>风格2: Bento Grid 便当盒</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans SC', sans-serif; }
+    </style>
+</head>
+<body class="bg-neutral-100 text-neutral-900 p-4 md:p-8">
+    <!-- Bento Grid 布局 -->
+    <div class="max-w-6xl mx-auto">
+        <!-- 导航 -->
+        <nav class="bg-white rounded-2xl p-4 mb-4 shadow-sm">
+            <div class="flex justify-between items-center">
+                <span class="text-xl font-medium">Lee.dev</span>
+                <div class="flex gap-6 text-sm text-neutral-600">
+                    <a href="#" class="hover:text-neutral-900 transition-colors">产品</a>
+                    <a href="#" class="hover:text-neutral-900 transition-colors">工具</a>
+                    <a href="#" class="hover:text-neutral-900 transition-colors">推荐</a>
+                    <a href="#" class="hover:text-neutral-900 transition-colors">关于</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Bento Grid -->
+        <div class="grid grid-cols-4 gap-4 auto-rows-[180px]">
+            <!-- 个人介绍 - 大卡片 -->
+            <div class="col-span-2 row-span-2 bg-white rounded-3xl p-8 shadow-sm flex flex-col justify-between cursor-pointer hover:shadow-md transition-shadow">
+                <div>
+                    <div class="w-20 h-20 bg-gradient-to-br from-orange-400 to-pink-500 rounded-full mb-6"></div>
+                    <h1 class="text-4xl font-medium mb-3">Hi, 我是 Lee</h1>
+                    <p class="text-neutral-500 text-lg leading-relaxed">
+                        用代码解决生活中的小麻烦<br>
+                        一个工具一个工具地做下去
+                    </p>
+                </div>
+                <div class="flex gap-3">
+                    <span class="bg-neutral-100 px-4 py-2 rounded-full text-sm">独立开发者</span>
+                    <span class="bg-neutral-100 px-4 py-2 rounded-full text-sm">工具控</span>
+                </div>
+            </div>
+
+            <!-- 产品1 -->
+            <div class="col-span-1 row-span-1 bg-gradient-to-br from-blue-500 to-blue-600 rounded-3xl p-6 text-white cursor-pointer hover:scale-[1.02] transition-transform">
+                <span class="text-xs bg-white/20 px-2 py-1 rounded-full">产品</span>
+                <h3 class="text-xl font-medium mt-4">资料存储系统</h3>
+                <p class="text-blue-100 text-sm mt-2">已上线</p>
+            </div>
+
+            <!-- 产品2 -->
+            <div class="col-span-1 row-span-1 bg-gradient-to-br from-purple-500 to-purple-600 rounded-3xl p-6 text-white cursor-pointer hover:scale-[1.02] transition-transform">
+                <span class="text-xs bg-white/20 px-2 py-1 rounded-full">开发中</span>
+                <h3 class="text-xl font-medium mt-4">写小说系统</h3>
+                <p class="text-purple-100 text-sm mt-2">敬请期待</p>
+            </div>
+
+            <!-- 小工具 -->
+            <div class="col-span-1 row-span-1 bg-white rounded-3xl p-6 shadow-sm cursor-pointer hover:shadow-md transition-shadow">
+                <span class="text-xs text-neutral-500">小工具</span>
+                <h3 class="text-lg font-medium mt-3">工具箱</h3>
+                <p class="text-neutral-400 text-sm mt-1">解决小问题</p>
+            </div>
+
+            <!-- 提示词库 -->
+            <div class="col-span-1 row-span-1 bg-gradient-to-br from-amber-400 to-orange-500 rounded-3xl p-6 text-white cursor-pointer hover:scale-[1.02] transition-transform">
+                <span class="text-xs bg-white/20 px-2 py-1 rounded-full">资源</span>
+                <h3 class="text-xl font-medium mt-4">提示词库</h3>
+                <p class="text-amber-100 text-sm mt-2">持续更新</p>
+            </div>
+
+            <!-- 推荐工具 - 横向大卡片 -->
+            <div class="col-span-2 row-span-1 bg-white rounded-3xl p-6 shadow-sm cursor-pointer hover:shadow-md transition-shadow">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <span class="text-xs text-neutral-500">推荐</span>
+                        <h3 class="text-xl font-medium mt-2">我在用的好工具</h3>
+                        <p class="text-neutral-400 text-sm mt-1">精选效率工具推荐</p>
+                    </div>
+                    <div class="flex -space-x-2">
+                        <div class="w-10 h-10 bg-red-400 rounded-xl"></div>
+                        <div class="w-10 h-10 bg-blue-400 rounded-xl"></div>
+                        <div class="w-10 h-10 bg-green-400 rounded-xl"></div>
+                        <div class="w-10 h-10 bg-yellow-400 rounded-xl"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skill技能库 -->
+            <div class="col-span-1 row-span-1 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-3xl p-6 text-white cursor-pointer hover:scale-[1.02] transition-transform">
+                <span class="text-xs bg-white/20 px-2 py-1 rounded-full">资源</span>
+                <h3 class="text-xl font-medium mt-4">Skill 技能库</h3>
+                <p class="text-emerald-100 text-sm mt-2">实用技能</p>
+            </div>
+
+            <!-- 公众号 -->
+            <div class="col-span-1 row-span-1 bg-neutral-900 rounded-3xl p-6 text-white cursor-pointer hover:scale-[1.02] transition-transform">
+                <span class="text-xs text-neutral-400">关注</span>
+                <h3 class="text-lg font-medium mt-3">公众号</h3>
+                <p class="text-neutral-400 text-sm mt-1">获取更多内容</p>
+            </div>
+        </div>
+
+        <footer class="mt-8 text-center text-sm text-neutral-400">
+            <p>BENTO GRID 便当盒风格 — 日系不对称网格，像便当盒一样分区</p>
+        </footer>
+    </div>
+</body>
+</html>

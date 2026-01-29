@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>风格8: Brutal Dark 最终版（支持切换主题）</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+    <style>
+        body { font-family: 'Space Grotesk', sans-serif; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        /* 深色模式阴影 */
+        .dark .brutal-shadow { box-shadow: 6px 6px 0px 0px #3b82f6; }
+        .dark .brutal-shadow:hover { box-shadow: 10px 10px 0px 0px #3b82f6; }
+        .dark .brutal-shadow-amber { box-shadow: 6px 6px 0px 0px #f59e0b; }
+        .dark .brutal-shadow-amber:hover { box-shadow: 10px 10px 0px 0px #f59e0b; }
+        .dark .brutal-shadow-cyan { box-shadow: 6px 6px 0px 0px #06b6d4; }
+        .dark .brutal-shadow-cyan:hover { box-shadow: 10px 10px 0px 0px #06b6d4; }
+        .dark .brutal-shadow-purple { box-shadow: 6px 6px 0px 0px #a855f7; }
+        .dark .brutal-shadow-purple:hover { box-shadow: 10px 10px 0px 0px #a855f7; }
+
+        /* 浅色模式阴影 */
+        .brutal-shadow { box-shadow: 6px 6px 0px 0px #2563eb; }
+        .brutal-shadow:hover { box-shadow: 10px 10px 0px 0px #2563eb; }
+        .brutal-shadow-amber { box-shadow: 6px 6px 0px 0px #d97706; }
+        .brutal-shadow-amber:hover { box-shadow: 10px 10px 0px 0px #d97706; }
+        .brutal-shadow-cyan { box-shadow: 6px 6px 0px 0px #0891b2; }
+        .brutal-shadow-cyan:hover { box-shadow: 10px 10px 0px 0px #0891b2; }
+        .brutal-shadow-purple { box-shadow: 6px 6px 0px 0px #9333ea; }
+        .brutal-shadow-purple:hover { box-shadow: 10px 10px 0px 0px #9333ea; }
+
+        .dark .glow { text-shadow: 0 0 30px rgba(59, 130, 246, 0.6); }
+        .glow { text-shadow: 0 0 30px rgba(37, 99, 235, 0.4); }
+    </style>
+</head>
+<body class="dark bg-neutral-950 text-white transition-colors duration-300">
+    <!-- 主题切换按钮 -->
+    <button id="theme-toggle" class="fixed top-4 right-4 z-50 border-2 border-neutral-700 dark:border-neutral-700 bg-white dark:bg-neutral-900 px-4 py-2 mono text-sm font-bold hover:border-blue-500 transition-all cursor-pointer">
+        <span class="dark:hidden">深色</span>
+        <span class="hidden dark:inline">浅色</span>
+    </button>
+
+    <!-- 导航 -->
+    <nav class="border-b-2 border-neutral-200 dark:border-neutral-800 p-4 bg-white dark:bg-neutral-950 transition-colors">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <span class="mono text-xl font-bold text-blue-600 dark:text-blue-500">LEE.DEV</span>
+            <div class="flex gap-6 mono text-sm uppercase tracking-wider">
+                <a href="#" class="text-neutral-500 dark:text-neutral-400 hover:text-blue-600 dark:hover:text-blue-500 hover:bg-blue-500/10 px-3 py-1 transition-all">产品</a>
+                <a href="#" class="text-neutral-500 dark:text-neutral-400 hover:text-blue-600 dark:hover:text-blue-500 hover:bg-blue-500/10 px-3 py-1 transition-all">工具</a>
+                <a href="#" class="text-neutral-500 dark:text-neutral-400 hover:text-blue-600 dark:hover:text-blue-500 hover:bg-blue-500/10 px-3 py-1 transition-all">推荐</a>
+                <a href="#" class="text-neutral-500 dark:text-neutral-400 hover:text-blue-600 dark:hover:text-blue-500 hover:bg-blue-500/10 px-3 py-1 transition-all">关于</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 首屏 -->
+    <section class="min-h-[90vh] flex items-center border-b-2 border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 transition-colors">
+        <div class="max-w-6xl mx-auto px-4 py-20 w-full">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <p class="mono text-blue-600 dark:text-blue-500 text-sm mb-4">// 独立开发者</p>
+                    <div class="w-32 h-32 border-4 border-blue-600 dark:border-blue-500 brutal-shadow mb-8 flex items-center justify-center">
+                        <span class="text-5xl font-bold text-blue-600 dark:text-blue-500">L</span>
+                    </div>
+                    <h1 class="text-6xl font-bold uppercase leading-none mb-6 text-neutral-900 dark:text-white">
+                        HI,<br>
+                        我是 <span class="text-blue-600 dark:text-blue-500 glow">LEE</span>
+                    </h1>
+                    <p class="text-xl text-neutral-500 dark:text-neutral-400 border-l-4 border-blue-600 dark:border-blue-500 pl-6 mb-8 leading-relaxed">
+                        用代码解决生活中的小麻烦<br>
+                        一个工具一个工具地做下去
+                    </p>
+                    <a href="#work" class="inline-block border-2 border-blue-600 dark:border-blue-500 text-blue-600 dark:text-blue-500 px-8 py-4 font-bold uppercase brutal-shadow hover:bg-blue-600 dark:hover:bg-blue-500 hover:text-white dark:hover:text-black transition-all cursor-pointer">
+                        看看我做了什么 ↓
+                    </a>
+                </div>
+
+                <!-- 最新动态 - 列表版 -->
+                <div class="border-2 border-neutral-200 dark:border-neutral-700 p-8 bg-neutral-50 dark:bg-neutral-900/50 transition-colors">
+                    <p class="mono text-xs uppercase mb-6 text-neutral-500 dark:text-neutral-500">// 最新动态</p>
+                    <div class="space-y-4">
+                        <div class="border-2 border-neutral-200 dark:border-neutral-700 p-4 hover:border-blue-600 dark:hover:border-blue-500 hover:bg-blue-500/5 cursor-pointer transition-all group">
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-neutral-800 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-500 transition-colors">资料存储系统</span>
+                                <span class="mono text-xs text-blue-600 dark:text-blue-500">LIVE</span>
+                            </div>
+                        </div>
+                        <div class="border-2 border-neutral-200 dark:border-neutral-700 p-4 hover:border-amber-600 dark:hover:border-amber-500 hover:bg-amber-500/5 cursor-pointer transition-all group">
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-neutral-800 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors">写小说系统</span>
+                                <span class="mono text-xs text-amber-600 dark:text-amber-500">WIP</span>
+                            </div>
+                        </div>
+                        <div class="border-2 border-neutral-200 dark:border-neutral-700 p-4 hover:border-cyan-600 dark:hover:border-cyan-500 hover:bg-cyan-500/5 cursor-pointer transition-all group">
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-neutral-800 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-500 transition-colors">提示词库</span>
+                                <span class="mono text-xs text-cyan-600 dark:text-cyan-500">UPDATING</span>
+                            </div>
+                        </div>
+                        <div class="border-2 border-neutral-200 dark:border-neutral-700 p-4 hover:border-purple-600 dark:hover:border-purple-500 hover:bg-purple-500/5 cursor-pointer transition-all group">
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-neutral-800 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-500 transition-colors">Skill 技能库</span>
+                                <span class="mono text-xs text-purple-600 dark:text-purple-500">RESOURCE</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 产品区 -->
+    <section id="work" class="py-24 border-b-2 border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 transition-colors">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex items-center gap-4 mb-12">
+                <span class="mono text-blue-600 dark:text-blue-500 text-sm">01</span>
+                <h2 class="text-3xl font-bold uppercase text-neutral-900 dark:text-white">我的产品</h2>
+                <div class="flex-1 h-0.5 bg-neutral-200 dark:bg-neutral-800"></div>
+                <a href="#" class="mono text-sm text-neutral-500 hover:text-blue-600 dark:hover:text-blue-500 transition-colors">查看全部 →</a>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="border-2 border-neutral-200 dark:border-neutral-700 p-8 hover:border-blue-600 dark:hover:border-blue-500 brutal-shadow transition-all cursor-pointer group bg-neutral-50 dark:bg-neutral-900/50">
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="mono text-xs px-3 py-1 border border-blue-600 dark:border-blue-500 text-blue-600 dark:text-blue-500">产品</span>
+                        <span class="mono text-xs text-neutral-400 dark:text-neutral-600">2024</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-neutral-800 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-500 transition-colors">资料存储系统</h3>
+                    <p class="text-neutral-500 mb-8">一句话介绍这个产品，解决什么问题，给谁用</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="border-2 border-blue-600 dark:border-blue-500 bg-blue-600 dark:bg-blue-500 text-white dark:text-black px-6 py-2 font-bold uppercase text-sm hover:bg-transparent hover:text-blue-600 dark:hover:text-blue-500 transition-all">立即使用</a>
+                        <a href="#" class="mono text-sm text-neutral-500 hover:text-blue-600 dark:hover:text-blue-500 transition-colors py-2">了解更多 →</a>
+                    </div>
+                </div>
+
+                <div class="border-2 border-neutral-200 dark:border-neutral-700 p-8 hover:border-amber-600 dark:hover:border-amber-500 brutal-shadow-amber transition-all cursor-pointer group bg-neutral-50 dark:bg-neutral-900/50">
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="mono text-xs px-3 py-1 border border-amber-600 dark:border-amber-500 text-amber-600 dark:text-amber-500">开发中</span>
+                        <span class="mono text-xs text-neutral-400 dark:text-neutral-600">2025</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-neutral-800 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors">写小说系统</h3>
+                    <p class="text-neutral-500 mb-8">一句话介绍这个产品，解决什么问题，给谁用</p>
+                    <div class="flex gap-4">
+                        <span class="border-2 border-neutral-300 dark:border-neutral-700 text-neutral-400 dark:text-neutral-600 px-6 py-2 font-bold uppercase text-sm cursor-not-allowed">敬请期待</span>
+                        <a href="#" class="mono text-sm text-neutral-500 hover:text-amber-600 dark:hover:text-amber-500 transition-colors py-2">了解更多 →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 小工具区 -->
+    <section class="py-24 border-b-2 border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/30 transition-colors">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex items-center gap-4 mb-12">
+                <span class="mono text-blue-600 dark:text-blue-500 text-sm">02</span>
+                <h2 class="text-3xl font-bold uppercase text-neutral-900 dark:text-white">小工具</h2>
+                <div class="flex-1 h-0.5 bg-neutral-200 dark:bg-neutral-800"></div>
+                <a href="#" class="mono text-sm text-neutral-500 hover:text-blue-600 dark:hover:text-blue-500 transition-colors">查看全部 →</a>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <a href="#" class="border-2 border-neutral-200 dark:border-neutral-800 p-6 hover:border-blue-600 dark:hover:border-blue-500 hover:bg-blue-500/5 transition-all cursor-pointer group bg-white dark:bg-transparent">
+                    <p class="font-bold text-neutral-800 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-500 transition-colors">工具 A</p>
+                    <p class="mono text-xs text-neutral-500 dark:text-neutral-600 mt-2">解决某个小问题</p>
+                </a>
+                <a href="#" class="border-2 border-neutral-200 dark:border-neutral-800 p-6 hover:border-blue-600 dark:hover:border-blue-500 hover:bg-blue-500/5 transition-all cursor-pointer group bg-white dark:bg-transparent">
+                    <p class="font-bold text-neutral-800 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-500 transition-colors">工具 B</p>
+                    <p class="mono text-xs text-neutral-500 dark:text-neutral-600 mt-2">解决某个小问题</p>
+                </a>
+                <a href="#" class="border-2 border-neutral-200 dark:border-neutral-800 p-6 hover:border-blue-600 dark:hover:border-blue-500 hover:bg-blue-500/5 transition-all cursor-pointer group bg-white dark:bg-transparent">
+                    <p class="font-bold text-neutral-800 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-500 transition-colors">工具 C</p>
+                    <p class="mono text-xs text-neutral-500 dark:text-neutral-600 mt-2">解决某个小问题</p>
+                </a>
+                <a href="#" class="border-2 border-neutral-200 dark:border-neutral-800 p-6 hover:border-blue-600 dark:hover:border-blue-500 transition-all cursor-pointer group flex items-center justify-center bg-white dark:bg-transparent">
+                    <span class="mono text-neutral-500 group-hover:text-blue-600 dark:group-hover:text-blue-500 transition-colors">更多 →</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 资源库 -->
+    <section class="py-24 border-b-2 border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 transition-colors">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex items-center gap-4 mb-12">
+                <span class="mono text-blue-600 dark:text-blue-500 text-sm">03</span>
+                <h2 class="text-3xl font-bold uppercase text-neutral-900 dark:text-white">资源库</h2>
+                <div class="flex-1 h-0.5 bg-neutral-200 dark:bg-neutral-800"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <a href="#" class="border-2 border-neutral-200 dark:border-neutral-700 p-8 hover:border-cyan-600 dark:hover:border-cyan-500 brutal-shadow-cyan transition-all cursor-pointer group bg-neutral-50 dark:bg-transparent">
+                    <span class="mono text-xs text-cyan-600 dark:text-cyan-500">// PROMPTS</span>
+                    <h3 class="text-2xl font-bold mt-4 mb-2 text-neutral-800 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-500 transition-colors">提示词库</h3>
+                    <p class="text-neutral-500">收集整理的优质提示词，持续更新中</p>
+                    <p class="mono text-sm text-cyan-600 dark:text-cyan-500 mt-6">进入 →</p>
+                </a>
+                <a href="#" class="border-2 border-neutral-200 dark:border-neutral-700 p-8 hover:border-purple-600 dark:hover:border-purple-500 brutal-shadow-purple transition-all cursor-pointer group bg-neutral-50 dark:bg-transparent">
+                    <span class="mono text-xs text-purple-600 dark:text-purple-500">// SKILLS</span>
+                    <h3 class="text-2xl font-bold mt-4 mb-2 text-neutral-800 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-500 transition-colors">Skill 技能库</h3>
+                    <p class="text-neutral-500">实用的技能集合，提升效率</p>
+                    <p class="mono text-sm text-purple-600 dark:text-purple-500 mt-6">进入 →</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 推荐工具 -->
+    <section class="py-24 border-b-2 border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/30 transition-colors">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex items-center gap-4 mb-12">
+                <span class="mono text-blue-600 dark:text-blue-500 text-sm">04</span>
+                <h2 class="text-3xl font-bold uppercase text-neutral-900 dark:text-white">推荐工具</h2>
+                <div class="flex-1 h-0.5 bg-neutral-200 dark:bg-neutral-800"></div>
+            </div>
+
+            <!-- 分类标签 -->
+            <div class="flex gap-2 mb-8 flex-wrap">
+                <button class="mono text-sm px-4 py-2 border-2 border-blue-600 dark:border-blue-500 bg-blue-600 dark:bg-blue-500 text-white dark:text-black font-bold cursor-pointer">AI工具</button>
+                <button class="mono text-sm px-4 py-2 border-2 border-neutral-300 dark:border-neutral-700 text-neutral-500 hover:border-blue-600 dark:hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-500 transition-all cursor-pointer">效率工具</button>
+                <button class="mono text-sm px-4 py-2 border-2 border-neutral-300 dark:border-neutral-700 text-neutral-500 hover:border-blue-600 dark:hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-500 transition-all cursor-pointer">开发工具</button>
+                <button class="mono text-sm px-4 py-2 border-2 border-neutral-300 dark:border-neutral-700 text-neutral-500 hover:border-blue-600 dark:hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-500 transition-all cursor-pointer">设计工具</button>
+            </div>
+
+            <!-- 工具卡片 -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="border-2 border-neutral-200 dark:border-neutral-800 p-6 hover:border-blue-600 dark:hover:border-blue-500 hover:bg-blue-500/5 transition-all cursor-pointer group bg-white dark:bg-transparent">
+                    <div class="w-12 h-12 border-2 border-neutral-300 dark:border-neutral-700 mb-4 flex items-center justify-center group-hover:border-blue-600 dark:group-hover:border-blue-500 transition-colors">
+                        <span class="text-xl text-neutral-700 dark:text-white">C</span>
+                    </div>
+                    <p class="font-bold text-neutral-800 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-500 transition-colors">Claude</p>
+                    <p class="mono text-xs text-neutral-500 dark:text-neutral-600 mt-1">AI 助手</p>
+                </div>
+                <div class="border-2 border-neutral-200 dark:border-neutral-800 p-6 hover:border-blue-600 dark:hover:border-blue-500 hover:bg-blue-500/5 transition-all cursor-pointer group bg-white dark:bg-transparent">
+                    <div class="w-12 h-12 border-2 border-neutral-300 dark:border-neutral-700 mb-4 flex items-center justify-center group-hover:border-blue-600 dark:group-hover:border-blue-500 transition-colors">
+                        <span class="text-xl text-neutral-700 dark:text-white">Cu</span>
+                    </div>
+                    <p class="font-bold text-neutral-800 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-500 transition-colors">Cursor</p>
+                    <p class="mono text-xs text-neutral-500 dark:text-neutral-600 mt-1">AI 编辑器</p>
+                </div>
+                <div class="border-2 border-neutral-200 dark:border-neutral-800 p-6 hover:border-blue-600 dark:hover:border-blue-500 hover:bg-blue-500/5 transition-all cursor-pointer group bg-white dark:bg-transparent">
+                    <div class="w-12 h-12 border-2 border-neutral-300 dark:border-neutral-700 mb-4 flex items-center justify-center group-hover:border-blue-600 dark:group-hover:border-blue-500 transition-colors">
+                        <span class="text-xl text-neutral-700 dark:text-white">N</span>
+                    </div>
+                    <p class="font-bold text-neutral-800 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-500 transition-colors">Notion</p>
+                    <p class="mono text-xs text-neutral-500 dark:text-neutral-600 mt-1">笔记协作</p>
+                </div>
+                <div class="border-2 border-neutral-200 dark:border-neutral-800 p-6 hover:border-blue-600 dark:hover:border-blue-500 hover:bg-blue-500/5 transition-all cursor-pointer group bg-white dark:bg-transparent">
+                    <div class="w-12 h-12 border-2 border-neutral-300 dark:border-neutral-700 mb-4 flex items-center justify-center group-hover:border-blue-600 dark:group-hover:border-blue-500 transition-colors">
+                        <span class="text-xl text-neutral-700 dark:text-white">→</span>
+                    </div>
+                    <p class="font-bold text-neutral-800 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-500 transition-colors">更多</p>
+                    <p class="mono text-xs text-neutral-500 dark:text-neutral-600 mt-1">查看全部</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部 -->
+    <footer class="py-20 bg-white dark:bg-neutral-950 transition-colors">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="border-2 border-neutral-200 dark:border-neutral-800 p-8 text-center bg-neutral-50 dark:bg-transparent">
+                    <p class="mono text-sm text-neutral-500 mb-6">// 关注公众号</p>
+                    <div class="w-32 h-32 border-2 border-neutral-300 dark:border-neutral-700 mx-auto mb-4"></div>
+                    <p class="text-neutral-500">获取更多内容</p>
+                </div>
+                <div>
+                    <p class="mono text-sm text-neutral-500 mb-6">// 联系方式</p>
+                    <div class="space-y-4 text-neutral-500">
+                        <p>微信：<span class="text-neutral-800 dark:text-white">your_wechat</span></p>
+                        <p>邮箱：<span class="text-neutral-800 dark:text-white">your@email.com</span></p>
+                    </div>
+                    <div class="mt-8 pt-8 border-t border-neutral-200 dark:border-neutral-800">
+                        <p class="mono text-xs text-neutral-400 dark:text-neutral-600">© 2025 LEE.DEV</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="text-center py-8 text-sm text-neutral-400 dark:text-neutral-700 border-t border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 transition-colors">
+        BRUTAL DARK 最终版 — 支持深色/浅色模式切换
+    </div>
+
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        const body = document.body;
+
+        toggle.addEventListener('click', () => {
+            if (body.classList.contains('dark')) {
+                body.classList.remove('dark', 'bg-neutral-950', 'text-white');
+                body.classList.add('bg-white', 'text-neutral-900');
+            } else {
+                body.classList.add('dark', 'bg-neutral-950', 'text-white');
+                body.classList.remove('bg-white', 'text-neutral-900');
+            }
+        });
+    </script>
+</body>
+</html>

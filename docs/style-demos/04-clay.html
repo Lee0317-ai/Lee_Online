@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>风格4: Claymorphism 粘土态</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Nunito', sans-serif; }
+        .clay {
+            background: linear-gradient(145deg, #ffffff, #e6e6e6);
+            box-shadow:
+                20px 20px 60px #d1d1d1,
+                -20px -20px 60px #ffffff,
+                inset 2px 2px 4px rgba(255,255,255,0.8);
+            border-radius: 30px;
+        }
+        .clay-sm {
+            background: linear-gradient(145deg, #ffffff, #e6e6e6);
+            box-shadow:
+                10px 10px 30px #d1d1d1,
+                -10px -10px 30px #ffffff,
+                inset 1px 1px 2px rgba(255,255,255,0.8);
+            border-radius: 20px;
+        }
+        .clay-btn {
+            background: linear-gradient(145deg, #fbbf24, #d97706);
+            box-shadow:
+                6px 6px 20px rgba(217, 119, 6, 0.4),
+                -6px -6px 20px rgba(251, 191, 36, 0.4);
+            border-radius: 16px;
+        }
+        .clay-colored {
+            box-shadow:
+                10px 10px 30px rgba(0,0,0,0.1),
+                -10px -10px 30px rgba(255,255,255,0.8),
+                inset 2px 2px 4px rgba(255,255,255,0.3);
+            border-radius: 24px;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-100 to-slate-200 min-h-screen">
+    <!-- 导航 -->
+    <nav class="p-6">
+        <div class="max-w-5xl mx-auto clay px-6 py-4 flex justify-between items-center">
+            <span class="text-xl font-bold text-slate-700">Lee.dev</span>
+            <div class="flex gap-6 text-sm text-slate-600">
+                <a href="#" class="hover:text-amber-600 transition-colors font-medium">产品</a>
+                <a href="#" class="hover:text-amber-600 transition-colors font-medium">工具</a>
+                <a href="#" class="hover:text-amber-600 transition-colors font-medium">推荐</a>
+                <a href="#" class="hover:text-amber-600 transition-colors font-medium">关于</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 首屏 -->
+    <section class="py-20 px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="clay p-12 flex flex-col md:flex-row gap-12 items-center">
+                <!-- 头像 -->
+                <div class="w-32 h-32 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 clay-colored flex items-center justify-center text-white text-4xl font-bold">
+                    L
+                </div>
+                <div class="flex-1 text-center md:text-left">
+                    <h1 class="text-4xl font-bold text-slate-800 mb-4">
+                        Hi, 我是 Lee
+                    </h1>
+                    <p class="text-xl text-slate-600 mb-8 leading-relaxed">
+                        用代码解决生活中的小麻烦<br>
+                        一个工具一个工具地做下去
+                    </p>
+                    <button class="clay-btn text-white px-8 py-4 font-semibold hover:scale-105 transition-transform cursor-pointer">
+                        看看我做了什么 ↓
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 产品 -->
+    <section class="py-16 px-6">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-2xl font-bold text-slate-700 mb-8 pl-4">我的产品</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="clay p-8 hover:scale-[1.02] transition-transform cursor-pointer">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-400 to-blue-600 clay-colored mb-6"></div>
+                    <span class="text-xs text-blue-600 font-bold uppercase">产品</span>
+                    <h3 class="text-xl font-bold text-slate-800 mt-2 mb-3">资料存储系统</h3>
+                    <p class="text-slate-500 mb-6">一句话介绍这个产品解决什么问题</p>
+                    <div class="flex gap-3">
+                        <button class="clay-sm px-5 py-2 text-sm font-semibold text-slate-700 hover:text-amber-600 transition-colors cursor-pointer">立即使用</button>
+                        <button class="text-sm text-slate-500 hover:text-slate-700 transition-colors cursor-pointer">了解更多 →</button>
+                    </div>
+                </div>
+                <div class="clay p-8 hover:scale-[1.02] transition-transform cursor-pointer">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-purple-400 to-purple-600 clay-colored mb-6"></div>
+                    <span class="text-xs text-purple-600 font-bold uppercase">开发中</span>
+                    <h3 class="text-xl font-bold text-slate-800 mt-2 mb-3">写小说系统</h3>
+                    <p class="text-slate-500 mb-6">一句话介绍这个产品解决什么问题</p>
+                    <div class="flex gap-3">
+                        <button class="clay-sm px-5 py-2 text-sm font-semibold text-slate-400 cursor-not-allowed">敬请期待</button>
+                        <button class="text-sm text-slate-500 hover:text-slate-700 transition-colors cursor-pointer">了解更多 →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 小工具 + 资源 -->
+    <section class="py-16 px-6">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-2xl font-bold text-slate-700 mb-8 pl-4">小工具 & 资源</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="clay-sm p-6 text-center hover:scale-105 transition-transform cursor-pointer">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 mx-auto mb-4"></div>
+                    <p class="font-semibold text-slate-700">工具 A</p>
+                </div>
+                <div class="clay-sm p-6 text-center hover:scale-105 transition-transform cursor-pointer">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-rose-400 to-rose-600 mx-auto mb-4"></div>
+                    <p class="font-semibold text-slate-700">工具 B</p>
+                </div>
+                <div class="clay-sm p-6 text-center hover:scale-105 transition-transform cursor-pointer">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 mx-auto mb-4"></div>
+                    <p class="font-semibold text-slate-700">提示词库</p>
+                </div>
+                <div class="clay-sm p-6 text-center hover:scale-105 transition-transform cursor-pointer">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-cyan-600 mx-auto mb-4"></div>
+                    <p class="font-semibold text-slate-700">Skill库</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部 -->
+    <footer class="py-16 px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="clay p-8 text-center">
+                <p class="text-slate-600 mb-4">关注公众号获取更多内容</p>
+                <div class="w-24 h-24 clay-sm mx-auto mb-6"></div>
+                <p class="text-sm text-slate-400">微信 · 邮箱</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="text-center py-8 text-sm text-slate-400">
+        CLAYMORPHISM 粘土态风格 — 软萌、有质感，像3D粘土
+    </div>
+</body>
+</html>
