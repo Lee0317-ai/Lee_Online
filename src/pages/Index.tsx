@@ -241,7 +241,7 @@ const Index = () => {
               </div>
             </a>
 
-            <a href="#" className="block border-2 border-neutral-200 dark:border-neutral-700 p-8 hover:border-brutal-amber shadow-brutal shadow-brutal-amber hover:shadow-brutal-lg transition-all group bg-neutral-50 dark:bg-neutral-900/50">
+            <div className="border-2 border-neutral-200 dark:border-neutral-700 p-8 hover:border-brutal-amber shadow-brutal shadow-brutal-amber hover:shadow-brutal-lg transition-all group bg-neutral-50 dark:bg-neutral-900/50">
               <div className="flex justify-between items-start mb-6">
                 <span className="mono text-xs px-3 py-1 border border-brutal-amber text-brutal-amber">开发中</span>
                 <span className="mono text-xs text-neutral-400 dark:text-neutral-600">2026</span>
@@ -254,11 +254,8 @@ const Index = () => {
                 <span className="border-2 border-neutral-300 dark:border-neutral-700 text-neutral-400 dark:text-neutral-600 px-6 py-2 font-bold uppercase text-sm cursor-not-allowed">
                   敬请期待
                 </span>
-                <a href="#" className="mono text-sm text-neutral-500 hover:text-brutal-amber transition-colors py-2">
-                  了解更多 →
-                </a>
               </div>
-            </a>
+            </div>
           </div>
         </div>
       </section>
