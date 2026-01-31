@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Moon, Sun } from 'lucide-react';
+import { toast } from 'sonner';
 import ProgressBar from '../components/ProgressBar';
-import { productLinks, recommendedToolLinks } from '../config/links';
+import AINews from '../components/AINews';
+import { productLinks, recommendedToolLinks, resourceLinks } from '../config/links';
 
 const Index = () => {
   const [isDark, setIsDark] = useState(true);
@@ -209,9 +211,7 @@ const Index = () => {
 
           <div className="grid md:grid-cols-2 gap-8">
             <a
-              href={productLinks.shiguang}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/products/shiguang"
               className="block border-2 border-neutral-200 dark:border-neutral-700 p-8 hover:border-primary shadow-brutal shadow-brutal-blue hover:shadow-brutal-lg transition-all group bg-neutral-50 dark:bg-neutral-900/50 relative"
             >
               <div className="flex justify-between items-start mb-6">
@@ -223,17 +223,8 @@ const Index = () => {
               </h3>
               <p className="text-neutral-500 mb-8">资料存储系统，帮你轻松管理和检索个人知识库</p>
               <div className="flex gap-4">
-                <span className="border-2 border-primary bg-primary text-primary-foreground px-6 py-2 font-bold uppercase text-sm hover:bg-transparent hover:text-primary transition-all">
-                  立即使用
-                </span>
-                <span className="mono text-sm text-neutral-500 hover:text-primary transition-colors py-2">
-                  了解更多 →
-                </span>
-              </div>
-              {/* 详情页预告 - hover 显示 */}
-              <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                <span className="mono text-xs text-neutral-400 dark:text-neutral-500 whitespace-nowrap">
-                  详情页即将推出
+                <span className="border-2 border-primary bg-primary text-primary-foreground px-6 py-2 font-bold uppercase text-sm group-hover:bg-transparent group-hover:text-primary transition-all">
+                  查看详情
                 </span>
               </div>
             </a>
@@ -273,37 +264,57 @@ const Index = () => {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {/* 工具1: 灵感转思维导图 */}
             <a
-              href="#"
+              href="/tools/mindmap"
               className="border-2 border-neutral-200 dark:border-neutral-800 p-6 hover:border-primary hover:bg-primary/5 transition-all group bg-background"
-              aria-label="使用工具A"
             >
-              <h4 className="font-bold text-foreground group-hover:text-primary transition-colors">工具 A</h4>
-              <p className="mono text-xs text-neutral-500 dark:text-neutral-600 mt-2">解决某个小问题</p>
+              <div className="w-10 h-10 border-2 border-primary flex items-center justify-center mb-3 group-hover:bg-primary group-hover:text-primary-foreground transition-all"
+              >
+                <span className="text-sm font-bold">脑</span>
+              </div>
+              <h4 className="font-bold text-foreground group-hover:text-primary transition-colors">灵感转导图</h4>
+              <p className="mono text-xs text-neutral-500 dark:text-neutral-600 mt-2">AI自动分类整理</p>
             </a>
+
+            {/* 工具2: OCR图片文字解析 */}
             <a
-              href="#"
-              className="border-2 border-neutral-200 dark:border-neutral-800 p-6 hover:border-primary hover:bg-primary/5 transition-all group bg-background"
-              aria-label="使用工具B"
+              href="/ocr.html"
+              className="border-2 border-neutral-200 dark:border-neutral-800 p-6 hover:border-primary hover:bg-primary/5 transition-all group bg-background text-left block"
             >
-              <h4 className="font-bold text-foreground group-hover:text-primary transition-colors">工具 B</h4>
-              <p className="mono text-xs text-neutral-500 dark:text-neutral-600 mt-2">解决某个小问题</p>
+              <div className="w-10 h-10 border-2 border-neutral-300 dark:border-neutral-700 flex items-center justify-center mb-3 group-hover:border-primary transition-all"
+              >
+                <span className="text-sm font-bold text-neutral-400 group-hover:text-primary">字</span>
+              </div>
+              <h4 className="font-bold text-foreground group-hover:text-primary transition-colors">图片转文字</h4>
+              <p className="mono text-xs text-neutral-500 dark:text-neutral-600 mt-2">OCR识别图片内容</p>
             </a>
-            <a
-              href="#"
-              className="border-2 border-neutral-200 dark:border-neutral-800 p-6 hover:border-primary hover:bg-primary/5 transition-all group bg-background"
-              aria-label="使用工具C"
+
+            {/* 工具3: 微信红包封面（占位） */}
+            <button
+              onClick={() => toast.info('红包封面功能开发中，敬请期待')}
+              className="border-2 border-neutral-200 dark:border-neutral-800 p-6 hover:border-brutal-amber hover:bg-brutal-amber/5 transition-all group bg-background text-left"
             >
-              <h4 className="font-bold text-foreground group-hover:text-primary transition-colors">工具 C</h4>
-              <p className="mono text-xs text-neutral-500 dark:text-neutral-600 mt-2">解决某个小问题</p>
-            </a>
-            <a
-              href="#"
-              className="border-2 border-neutral-200 dark:border-neutral-800 p-6 hover:border-primary hover:bg-primary/5 transition-all group flex items-center justify-center bg-background"
-              aria-label="查看更多工具"
+              <div className="w-10 h-10 border-2 border-neutral-300 dark:border-neutral-700 flex items-center justify-center mb-3 group-hover:border-brutal-amber transition-all"
+              >
+                <span className="text-sm font-bold text-neutral-400">🧧</span>
+              </div>
+              <h4 className="font-bold text-foreground group-hover:text-brutal-amber transition-colors">红包封面</h4>
+              <p className="mono text-xs text-neutral-500 dark:text-neutral-600 mt-2">制作微信红包封面</p>
+            </button>
+
+            {/* 工具4: 文档校对（占位） */}
+            <button
+              onClick={() => toast.info('文档校对功能开发中，敬请期待')}
+              className="border-2 border-neutral-200 dark:border-neutral-800 p-6 hover:border-brutal-purple hover:bg-brutal-purple/5 transition-all group bg-background text-left"
             >
-              <span className="mono text-neutral-500 group-hover:text-primary transition-colors">更多 →</span>
-            </a>
+              <div className="w-10 h-10 border-2 border-neutral-300 dark:border-neutral-700 flex items-center justify-center mb-3 group-hover:border-brutal-purple transition-all"
+              >
+                <span className="text-sm font-bold text-neutral-400">✓</span>
+              </div>
+              <h4 className="font-bold text-foreground group-hover:text-brutal-purple transition-colors">文档校对</h4>
+              <p className="mono text-xs text-neutral-500 dark:text-neutral-600 mt-2">AI检查错别字语法</p>
+            </button>
           </div>
         </div>
       </section>
@@ -318,21 +329,31 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
+            {/* 提示词库 */}
             <a
-              href="#"
+              href={resourceLinks.prompts.url}
+              target="_blank"
+              rel="noopener noreferrer"
               className="border-2 border-neutral-200 dark:border-neutral-700 p-8 hover:border-brutal-cyan hover:bg-brutal-cyan/5 shadow-brutal shadow-brutal-cyan hover:shadow-brutal-lg transition-all group bg-neutral-50 dark:bg-transparent"
               aria-label="进入提示词库"
             >
               <span className="mono text-xs text-brutal-cyan">// PROMPTS</span>
-              <h3 className="text-2xl font-bold mt-4 mb-2 text-foreground group-hover:text-brutal-cyan transition-colors">
-                提示词库
-              </h3>
+              <div className="flex items-center gap-2 mt-4 mb-2">
+                <h3 className="text-2xl font-bold text-foreground group-hover:text-brutal-cyan transition-colors">
+                  提示词库
+                </h3>
+                <span className="mono text-xs px-2 py-0.5 bg-brutal-cyan/10 text-brutal-cyan">{resourceLinks.prompts.name}</span>
+              </div>
               <p className="text-neutral-500">收集整理的优质提示词，持续更新中</p>
               <p className="mono text-sm text-brutal-cyan mt-6">进入 →</p>
             </a>
+
+            {/* Skill技能库 */}
             <a
-              href="#"
-              className="border-2 border-neutral-200 dark:border-neutral-700 p-8 hover:border-brutal-purple hover:bg-brutal-purple/5 shadow-brutal shadow-brutal-purple hover:shadow-brutal-lg transition-all group bg-neutral-50 dark:bg-transparent"
+              href="https://skills.sh/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border-2 border-neutral-200 dark:border-neutral-700 p-8 hover:border-brutal-purple hover:bg-brutal-purple/5 shadow-brutal shadow-brutal-purple hover:shadow-brutal-lg transition-all group bg-neutral-50 dark:bg-transparent text-left block"
               aria-label="进入Skill技能库"
             >
               <span className="mono text-xs text-brutal-purple">// SKILLS</span>
@@ -481,6 +502,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* AI资讯 */}
+      <AINews />
 
       {/* 底部 */}
       <footer id="about" className="py-20 bg-background transition-colors">

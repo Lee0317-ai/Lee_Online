@@ -17,8 +17,16 @@ export const recommendedToolLinks = {
   codebuddy: 'https://copilot.tencent.com',
 };
 
-// 资源库链接配置（暂无，飞书待配置）
+// 资源库链接配置
 export const resourceLinks = {
-  prompts: null, // 提示词库 - 暂无链接
-  skills: null,  // Skill技能库 - 暂无链接
+  prompts: {
+    name: '猫叔的提示词',
+    url: 'https://z0x8z83m7x.feishu.cn/docx/CpRpddnOQoVPpKxeXnAc3vBvn6f?sessionid=',
+    enabled: true,
+  },
+  skills: {
+    name: 'Skill技能库',
+    url: null,
+    enabled: false,
+  },
 };
