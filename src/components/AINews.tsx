@@ -88,7 +88,7 @@ const AINews = () => {
   });
 
   return (
-    <section className="py-24 border-b-2 border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/30 transition-colors">
+    <section id="ai-news" className="py-24 border-b-2 border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/30 transition-colors">
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex items-center gap-4 mb-12">
           <span className="mono text-primary text-sm">05</span>

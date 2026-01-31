@@ -2,7 +2,10 @@ import { useState, useEffect } from 'react';
 import { Moon, Sun } from 'lucide-react';
 import { toast } from 'sonner';
 import ProgressBar from '../components/ProgressBar';
+import AILearning from '../components/AILearning';
 import AINews from '../components/AINews';
+import FixedNav from '../components/FixedNav';
+import BackToTop from '../components/BackToTop';
 import { productLinks, recommendedToolLinks, resourceLinks } from '../config/links';
 
 const Index = () => {
@@ -16,6 +19,36 @@ const Index = () => {
     }
   }, [isDark]);
 
+  // 滚动位置保持：恢复滚动位置
+  useEffect(() => {
+    // 从 sessionStorage 读取保存的滚动位置
+    const savedScrollPosition = sessionStorage.getItem('homeScrollPosition');
+    if (savedScrollPosition) {
+      const scrollY = parseInt(savedScrollPosition, 10);
+      if (!isNaN(scrollY) && scrollY > 0) {
+        // 延迟执行，确保页面已渲染
+        setTimeout(() => {
+          window.scrollTo({ top: scrollY, behavior: 'instant' as ScrollBehavior });
+        }, 0);
+      }
+    }
+  }, []);
+
+  // 滚动位置保持：记录滚动位置
+  useEffect(() => {
+    const handleScroll = () => {
+      // 记录当前滚动位置到 sessionStorage
+      sessionStorage.setItem('homeScrollPosition', window.scrollY.toString());
+    };
+
+    // 监听滚动事件（使用 passive 优化性能）
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   const toggleTheme = () => {
     setIsDark(!isDark);
   };
@@ -24,6 +57,12 @@ const Index = () => {
     <div className="min-h-screen">
       {/* 滚动进度条 */}
       <ProgressBar />
+
+      {/* 固定导航 */}
+      <FixedNav />
+
+      {/* 返回顶部按钮 */}
+      <BackToTop />
 
       {/* 主题切换按钮 */}
       <button
@@ -46,43 +85,13 @@ const Index = () => {
 
       {/* 导航 */}
       <nav className="border-b-2 border-neutral-200 dark:border-neutral-800 p-4 bg-background transition-colors" aria-label="主导航">
-        <div className="max-w-6xl mx-auto flex justify-between items-center">
+        <div className="max-w-6xl mx-auto flex justify-center items-center">
           <a href="/" className="mono text-xl font-bold text-primary">LEE'S ONLINE</a>
-          <div className="flex gap-6 mono text-sm uppercase tracking-wider">
-            <a
-              href="#work"
-              className="text-neutral-500 dark:text-neutral-400 hover:text-primary hover:bg-primary/10 px-3 py-1 transition-all"
-              aria-label="查看产品"
-            >
-              产品
-            </a>
-            <a
-              href="#tools"
-              className="text-neutral-500 dark:text-neutral-400 hover:text-primary hover:bg-primary/10 px-3 py-1 transition-all"
-              aria-label="查看小工具"
-            >
-              工具
-            </a>
-            <a
-              href="#recommended"
-              className="text-neutral-500 dark:text-neutral-400 hover:text-primary hover:bg-primary/10 px-3 py-1 transition-all"
-              aria-label="查看推荐工具"
-            >
-              推荐
-            </a>
-            <a
-              href="#about"
-              className="text-neutral-500 dark:text-neutral-400 hover:text-primary hover:bg-primary/10 px-3 py-1 transition-all"
-              aria-label="查看关于信息"
-            >
-              关于
-            </a>
-          </div>
         </div>
       </nav>
 
       {/* 首屏 */}
-      <section className="min-h-[80vh] flex flex-col justify-center border-b-2 border-neutral-200 dark:border-neutral-800 bg-background transition-colors">
+      <section id="hero" className="min-h-[80vh] flex flex-col justify-center border-b-2 border-neutral-200 dark:border-neutral-800 bg-background transition-colors">
         <div className="max-w-6xl mx-auto px-4 py-16 w-full">
           {/* 上半部分：左右分栏 */}
           <div className="grid md:grid-cols-2 gap-12 mb-16">
@@ -196,6 +205,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* AI 学习板块 */}
+      <AILearning />
 
       {/* 产品区 */}
       <section id="work" className="py-24 border-b-2 border-neutral-200 dark:border-neutral-800 bg-background transition-colors">
@@ -320,7 +332,7 @@ const Index = () => {
       </section>
 
       {/* 资源库 */}
-      <section className="py-24 border-b-2 border-neutral-200 dark:border-neutral-800 bg-background transition-colors">
+      <section id="resources" className="py-24 border-b-2 border-neutral-200 dark:border-neutral-800 bg-background transition-colors">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex items-center gap-4 mb-12">
             <span className="mono text-primary text-sm">03</span>
@@ -510,17 +522,23 @@ const Index = () => {
       <footer id="about" className="py-20 bg-background transition-colors">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* 左侧：微信二维码 */}
             <div className="border-2 border-neutral-200 dark:border-neutral-800 p-8 text-center bg-neutral-50 dark:bg-transparent">
-              <p className="mono text-sm text-neutral-500 mb-6">// 关注公众号</p>
-              <div className="w-32 h-32 border-2 border-neutral-300 dark:border-neutral-700 mx-auto mb-4" aria-label="公众号二维码"></div>
-              <p className="text-neutral-500">获取更多内容</p>
+              <p className="mono text-sm text-neutral-500 mb-6">// 微信</p>
+              <div className="w-48 h-48 border-2 border-neutral-300 dark:border-neutral-700 mx-auto mb-4 flex items-center justify-center">
+                <img
+                  src="/wechat-qrcode.png"
+                  alt="微信二维码"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <p className="text-neutral-500">这是我的微信，有需要可以一起交流~</p>
             </div>
+
+            {/* 右侧：联系方式 */}
             <div>
               <p className="mono text-sm text-neutral-500 mb-6">// 联系方式</p>
               <div className="space-y-4 text-neutral-500">
-                <p>
-                  微信：<span className="text-foreground">18559693218</span>
-                </p>
                 <p>
                   邮箱：<span className="text-foreground">287796033@qq.com</span>
                 </p>
