@@ -2,6 +2,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Shiguang from "./pages/products/Shiguang";
 import MindMap from "./pages/tools/MindMap";
+import OCR from "./pages/tools/OCR";
 
 export const routers = [
     {
@@ -18,6 +19,11 @@ export const routers = [
       path: "/tools/mindmap",
       name: 'mindmap',
       element: <MindMap />,
+    },
+    {
+      path: "/tools/ocr",
+      name: 'ocr',
+      element: <OCR />,
     },
     /* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */
     {

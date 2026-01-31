@@ -14,11 +14,11 @@ interface OCRDialogProps {
   onOpenChange: (open: boolean) => void;
 }
 
-// Coze 配置
+// Coze 配置 - 从环境变量读取
 const COZE_CONFIG = {
-  apiKey: 'pat_AESuWVLdlItxpjDPJT1cRIzTjQY7XcUqlOR0DG26jfYGsDgSyPcI2RChU3DuUtPH',
-  botId: '7600665512100151322',
-  baseUrl: 'https://api.coze.cn',
+  apiKey: import.meta.env.VITE_COZE_API_KEY || '',
+  botId: import.meta.env.VITE_COZE_BOT_ID_OCR || '',
+  baseUrl: import.meta.env.VITE_COZE_BASE_URL || 'https://api.coze.cn',
 };
 
 export function OCRDialog({ open, onOpenChange }: OCRDialogProps) {
@@ -88,7 +88,7 @@ export function OCRDialog({ open, onOpenChange }: OCRDialogProps) {
     const formData = new FormData();
     formData.append('file', file);
 
-    const response = await fetch(`${COZE_CONFIG.baseUrl}/v1/files`, {
+    const response = await fetch(`${COZE_CONFIG.baseUrl}/v1/files/upload`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${COZE_CONFIG.apiKey}`,
@@ -97,7 +97,9 @@ export function OCRDialog({ open, onOpenChange }: OCRDialogProps) {
     });
 
     if (!response.ok) {
-      throw new Error('文件上传失败');
+      const errorData = await response.json().catch(() => ({}));
+      console.error('上传失败:', errorData);
+      throw new Error(errorData.msg || '文件上传失败');
     }
 
     const data = await response.json();
@@ -106,36 +108,33 @@ export function OCRDialog({ open, onOpenChange }: OCRDialogProps) {
 
   // 调用 Coze Bot 识别图片
   const recognizeImage = async (fileId: string): Promise<string> => {
+    const requestBody = {
+      bot_id: COZE_CONFIG.botId,
+      user_id: 'user_' + Date.now(),
+      stream: false,
+      additional_messages: [{
+        role: 'user',
+        content: JSON.stringify([
+          {
+            type: 'text',
+            text: '请识别这张图片中的所有文字内容，只返回识别出的文字，不要添加任何解释。'
+          },
+          {
+            type: 'image',
+            file_id: fileId
+          }
+        ]),
+        content_type: 'object_string'
+      }]
+    };
+
     const response = await fetch(`${COZE_CONFIG.baseUrl}/v3/chat`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${COZE_CONFIG.apiKey}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        bot_id: COZE_CONFIG.botId,
-        user_id: 'user_' + Date.now(),
-        stream: false,
-        auto_save_history: false,
-        additional_messages: [
-          {
-            role: 'user',
-            content: [
-              {
-                type: 'image',
-                file_url: {
-                  url: `https://api.coze.cn/v1/files/${fileId}`,
-                },
-              },
-              {
-                type: 'text',
-                text: '请识别这张图片中的所有文字内容，只返回识别出的文字，不要添加任何解释。',
-              },
-            ],
-            content_type: 'object_string',
-          },
-        ],
-      }),
+      body: JSON.stringify(requestBody),
     });
 
     if (!response.ok) {
@@ -143,12 +142,14 @@ export function OCRDialog({ open, onOpenChange }: OCRDialogProps) {
     }
 
     const data = await response.json();
+    console.log('OCRDialog - 识别 API 返回:', data);
 
     // 轮询获取结果
     if (data.data?.conversation_id && data.data?.id) {
       return await pollResult(data.data.conversation_id, data.data.id);
     }
 
+    console.error('OCRDialog - 无法解析 API 响应:', data);
     throw new Error('获取识别结果失败');
   };
 

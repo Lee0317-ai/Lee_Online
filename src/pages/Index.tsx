@@ -291,7 +291,7 @@ const Index = () => {
 
             {/* 工具2: OCR图片文字解析 */}
             <a
-              href="/ocr.html"
+              href="/tools/ocr"
               className="border-2 border-neutral-200 dark:border-neutral-800 p-6 hover:border-primary hover:bg-primary/5 transition-all group bg-background text-left block"
             >
               <div className="w-10 h-10 border-2 border-neutral-300 dark:border-neutral-700 flex items-center justify-center mb-3 group-hover:border-primary transition-all"
