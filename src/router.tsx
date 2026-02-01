@@ -1,6 +1,7 @@
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Shiguang from "./pages/products/Shiguang";
+import SkillSearch from "./pages/products/SkillSearch";
 import MindMap from "./pages/tools/MindMap";
 import OCR from "./pages/tools/OCR";
 
@@ -14,6 +15,11 @@ export const routers = [
       path: "/products/shiguang",
       name: 'shiguang',
       element: <Shiguang />,
+    },
+    {
+      path: "/products/skill-search",
+      name: 'skill-search',
+      element: <SkillSearch />,
     },
     {
       path: "/tools/mindmap",

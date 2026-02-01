@@ -1,7 +1,7 @@
 // 产品链接配置
 export const productLinks = {
   shiguang: 'https://277078962e8c471691f9db87fae77eb3.prod.enter.pro/', // 拾光（资料存储系统）外部链接
-  // novel: null // 写小说系统 - 开发中，暂无链接
+  skillSearch: 'https://skill-search-pink.vercel.app/', // Skill Search - AI 技能搜索平台
 };
 
 // 推荐工具链接配置
@@ -25,8 +25,8 @@ export const resourceLinks = {
     enabled: true,
   },
   skills: {
-    name: 'Skill技能库',
-    url: null,
-    enabled: false,
+    name: 'Skill Search',
+    url: 'https://skill-search-pink.vercel.app/',
+    enabled: true,
   },
 };

@@ -183,10 +183,10 @@ const Index = () => {
                   <span className="mono text-xs text-primary">LIVE</span>
                 </div>
               </a>
-              <a href="#" className="border-2 border-neutral-200 dark:border-neutral-700 p-4 hover:border-brutal-amber hover:bg-brutal-amber/5 transition-all group">
+              <a href="/products/skill-search" className="border-2 border-neutral-200 dark:border-neutral-700 p-4 hover:border-primary hover:bg-primary/5 transition-all group">
                 <div className="flex justify-between items-center">
-                  <span className="font-bold text-foreground group-hover:text-brutal-amber transition-colors">写小说系统</span>
-                  <span className="mono text-xs text-brutal-amber">WIP</span>
+                  <span className="font-bold text-foreground group-hover:text-primary transition-colors">Skill Search</span>
+                  <span className="mono text-xs text-primary">LIVE</span>
                 </div>
               </a>
               <a href="#" className="border-2 border-neutral-200 dark:border-neutral-700 p-4 hover:border-brutal-cyan hover:bg-brutal-cyan/5 transition-all group">
@@ -241,21 +241,21 @@ const Index = () => {
               </div>
             </a>
 
-            <div className="border-2 border-neutral-200 dark:border-neutral-700 p-8 hover:border-brutal-amber shadow-brutal shadow-brutal-amber hover:shadow-brutal-lg transition-all group bg-neutral-50 dark:bg-neutral-900/50">
+            <a href="/products/skill-search" className="border-2 border-neutral-200 dark:border-neutral-700 p-8 hover:border-primary shadow-brutal shadow-primary hover:shadow-brutal-lg transition-all group bg-neutral-50 dark:bg-neutral-900/50">
               <div className="flex justify-between items-start mb-6">
-                <span className="mono text-xs px-3 py-1 border border-brutal-amber text-brutal-amber">开发中</span>
-                <span className="mono text-xs text-neutral-400 dark:text-neutral-600">2026</span>
+                <span className="mono text-xs px-3 py-1 border border-primary text-primary">已上线</span>
+                <span className="mono text-xs text-neutral-400 dark:text-neutral-600">2025</span>
               </div>
-              <h3 className="text-2xl font-bold mb-3 text-foreground group-hover:text-brutal-amber transition-colors">
-                写小说系统
+              <h3 className="text-2xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">
+                Skill Search
               </h3>
-              <p className="text-neutral-500 mb-8">一句话介绍这个产品，解决什么问题，给谁用</p>
+              <p className="text-neutral-500 mb-8">AI 技能搜索平台，快速发现并学习实用 AI 技能</p>
               <div className="flex gap-4">
-                <span className="border-2 border-neutral-300 dark:border-neutral-700 text-neutral-400 dark:text-neutral-600 px-6 py-2 font-bold uppercase text-sm cursor-not-allowed">
-                  敬请期待
+                <span className="border-2 border-primary text-primary px-6 py-2 font-bold uppercase text-sm group-hover:bg-primary group-hover:text-white transition-colors">
+                  了解更多 →
                 </span>
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </section>
